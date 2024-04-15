@@ -1,0 +1,60 @@
+{
+  "name": "@bluryar/material-bluryar-vue-3",
+  "version": "0.1.7",
+  "description": "这是一个关于 appworks 的物料仓库，基于 Vue3 开发。",
+  "author": "bluryar",
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "deploy": "npm run generate && npm run sync",
+    "generate": "appworks generate",
+    "sync": "appworks sync",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "commit": "git-cz",
+    "bump:patch": "tsx ./scripts/bumpp.ts patch",
+    "bump:minor": "tsx ./scripts/bumpp.ts minor",
+    "bump:major": "tsx ./scripts/bumpp.ts major",
+    "release": "tsx ./scripts/release.ts",
+    "prepublishOnly": "npm run generate",
+    "postinstall": "npx simple-git-hooks"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.11.6",
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
+    "@ice/screenshot": "^0.1.1",
+    "commitizen": "^4.3.0",
+    "cz-git": "^1.9.1",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "eslint-plugin-format": "^0.1.0",
+    "fast-glob": "^3.3.2",
+    "ice-npm-utils": "^3.0.3",
+    "lint-staged": "^15.2.2",
+    "simple-git-hooks": "^2.11.1",
+    "tsx": "^4.7.2",
+    "typescript": "^5.2.2"
+  },
+  "materialConfig": {
+    "template": "@bluryar/template-vue-3",
+    "registry": "http://192.168.224.84:4873",
+    "unpkgHost": "http://192.168.224.84:4874",
+    "type": "vue"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  },
+  "simple-git-hooks": {
+    "commit-msg": "npx --no -- commitlint --edit $1",
+    "pre-push": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts,mjs,cjs,mts,cts,md,html,yaml,yml}": [
+      "eslint --fix"
+    ]
+  }
+}
