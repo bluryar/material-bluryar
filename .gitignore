@@ -14,3 +14,4 @@ build
 screenshot.png
 
 .appworks-tmp/
+.env.local
